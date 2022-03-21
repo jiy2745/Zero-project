@@ -1,2 +1,4 @@
-# Zero-project
-Zero flutter project
+Zero project
+=============
+제로 플러터 프로젝트에 대하여 설명하고 있습니다.
+
