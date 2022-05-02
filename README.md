@@ -47,7 +47,7 @@ class Example extends StatefulWidget {
   State<Example> createState() => _ExampleState();
 }
 
-class _ExampleState extends State< Example> {
+class _ExampleState extends State<Example> {
   @override
   Widget build(BuildContext context) {
     return Container(
