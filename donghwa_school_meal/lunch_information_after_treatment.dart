@@ -20,9 +20,11 @@ List<String> removeBracket(String bracketLunchInformation) {
         //'('를 만나면 더 이상 리스트에 담지 않음
         mode = 1;
       }
-    } else if (bracketLunchInformation[i] == ')') {
-      // ')'를 만날 때 다시 리스트에 담음
-      mode = 0;
+    } else {
+      if (bracketLunchInformation[i] == ')') {
+        // ')'를 만날 때 다시 리스트에 담음
+        mode = 0;
+      }
     }
   }
   final List<String> lunchInformation = result.join('').split(' ');
