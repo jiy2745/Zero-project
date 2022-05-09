@@ -1,6 +1,7 @@
 List<String> afterTreatment(String rawLunchInformation) {
+  final int lastIndex = rawLunchInformation.indexOf(']]');
   final String bracketLunchInformation = rawLunchInformation
-      .substring(20, rawLunchInformation.length - 15) //앞, 뒤 필요없는 문자 제거
+      .substring(20, lastIndex) //앞, 뒤 필요없는 문자 제거
       .replaceAll('<br/>', ''); //<br/> 제거
   final List<String> lunchInformation = removeBracket(bracketLunchInformation);
   return lunchInformation;
@@ -32,7 +33,8 @@ List<String> removeBracket(String bracketLunchInformation) {
 }
 
 String afterTreatmentKcal(String rawKcalInformation) {
-  final String kcalInformation = rawKcalInformation.substring(
-      20, rawKcalInformation.length - 15); //앞, 뒤 필요없는 문자 제거
+  final int lastIndex = rawKcalInformation.indexOf(']]');
+  final String kcalInformation =
+      rawKcalInformation.substring(20, lastIndex); //앞, 뒤 필요없는 문자 제거
   return kcalInformation;
 }
