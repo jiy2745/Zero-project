@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'get_lunch_information.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void startLink(int gog) {
+void startLink(int gog) async {
   if (gog == 0) {
-    launchUrl(
-      Uri.parse(
-          'https://drive.google.com/file/d/18Z00bcNR25mJ9A5tJYELZ8WfDHIwwjnV/view?usp=drivesdk'),
-    );
+    await launchUrl(
+        Uri.parse(
+            'https://drive.google.com/file/d/18Z00bcNR25mJ9A5tJYELZ8WfDHIwwjnV/view?usp=drivesdk'),
+        mode: LaunchMode.externalApplication);
   } else {
-    launchUrl(
+    await launchUrl(
       Uri.parse(
           'https://github.com/jiy2745/Zero-project/tree/main/donghwa_school_meal'),
+      mode: LaunchMode.externalApplication,
     );
   }
 }
