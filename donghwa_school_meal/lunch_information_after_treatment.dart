@@ -7,6 +7,31 @@ List<String> afterTreatment(String rawLunchInformation) {
   return lunchInformation;
 }
 
+String afterTreatmentKcal(String rawKcalInformation) {
+  final int lastIndex = rawKcalInformation.indexOf(']]');
+  final String kcalInformation =
+      rawKcalInformation.substring(20, lastIndex); //앞, 뒤 필요없는 문자 제거
+  return kcalInformation;
+}
+
+List<String> dinnerAfterTreatment(String rawDinnerInformation) {
+  final int firstIndex = rawDinnerInformation.lastIndexOf('<![CDATA[');
+  final String bracketDinnerInformation = rawDinnerInformation
+      .substring(
+          firstIndex + 9, rawDinnerInformation.length - 15) //앞, 뒤 필요없는 문자 제거
+      .replaceAll('<br/>', ''); //<br/> 제거
+  final List<String> dinnerInformation =
+      removeBracket(bracketDinnerInformation);
+  return dinnerInformation;
+}
+
+String dinnerAfterTreatmentKcal(String rawDinnerKcalInformation) {
+  final int firstIndex = rawDinnerKcalInformation.lastIndexOf('<![CDATA[');
+  final String dinnerKcalInformation = rawDinnerKcalInformation.substring(
+      firstIndex + 9, rawDinnerKcalInformation.length - 15); //앞, 뒤 필요없는 문자 제거
+  return dinnerKcalInformation;
+}
+
 List<String> removeBracket(String bracketLunchInformation) {
   //알레르기 정보 제거
   List<String> result = [];
@@ -30,11 +55,4 @@ List<String> removeBracket(String bracketLunchInformation) {
   }
   final List<String> lunchInformation = result.join('').split(' ');
   return lunchInformation;
-}
-
-String afterTreatmentKcal(String rawKcalInformation) {
-  final int lastIndex = rawKcalInformation.indexOf(']]');
-  final String kcalInformation =
-      rawKcalInformation.substring(20, lastIndex); //앞, 뒤 필요없는 문자 제거
-  return kcalInformation;
 }
